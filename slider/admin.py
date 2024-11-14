@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import SliderItem
 from adminsortable2.admin import SortableAdminMixin
 from django.utils.safestring import mark_safe
-from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
+from easy_thumbnails.files import get_thumbnailer
+from adminsortable2.admin import SortableAdminBase
 
 @admin.register(SliderItem)
 class SliderItemAdmin(SortableAdminMixin, admin.ModelAdmin):
@@ -11,11 +12,9 @@ class SliderItemAdmin(SortableAdminMixin, admin.ModelAdmin):
 
     def admin_thumbnail(self, obj):
         if obj.image:
-            return mark_safe(f'<img src="{obj.image.url}" style="max-width: 150px; height: auto;" />')
+            # Создание миниатюры с помощью easy-thumbnails
+            thumbnail_options = {'size': (150, 150), 'crop': True}
+            thumbnail_url = get_thumbnailer(obj.image).get_thumbnail(thumbnail_options).url
+            return mark_safe(f'<img src="{thumbnail_url}" style="max-width: 150px; height: auto;" />')
         return '-'
     admin_thumbnail.short_description = 'Preview'
-    admin_thumbnail.allow_tags = True
-
-
-class SliderAdmin(SortableAdminBase, admin.ModelAdmin):
-    list_display = ('title', 'image_preview', 'move_up_down_links')

@@ -32,37 +32,35 @@
     <!-- Основной контент страницы -->
     <main>
         <div class="container">
-            <!-- Заголовок -->
-            <div class="section-title">
+            <div class="section-title text-center">
                 <h1>Космическое агентство</h1>
                 <p>Национальное управление по аэронавтике и исследованию космического пространства — ведомство, относящееся к федеральному правительству США и подчиняющееся непосредственно президенту США.</p>
             </div>
 
-            <!-- Секция с изображениями и текстом -->
-            <div class="section-content">
-                <!-- Иконки -->
-                <div class="left-images">
-                    <div class="item">
-                        <img src="{% static 'img/space-shuttle.png'%}" alt="Спейс шаттлы">
+            <div class="row section-content align-items-start">
+                <!-- Левая часть с иконками -->
+                <div class="col-12 col-md-6 d-flex flex-wrap">
+                    <div class="col-6 mb-3">
+                        <img src="{% static 'img/space-shuttle.png' %}" alt="Спейс шаттлы" class="img-fluid">
                         <p>Спейс шаттлы — пилотируемые корабли</p>
                     </div>
-                    <div class="item">
-                        <img src="{% static 'img/telescope.png'%}" alt="Телескоп">
+                    <div class="col-6 mb-3">
+                        <img src="{% static 'img/telescope.png' %}" alt="Телескоп" class="img-fluid">
                         <p>Лучшее телескопическое оборудование</p>
                     </div>
-                    <div class="item">
-                        <img src="{% static 'img/stars_moon_icon-icons.com_62501.png' %}" alt="Луна">
+                    <div class="col-6">
+                        <img src="{% static 'img/stars_moon_icon-icons.com_62501.png' %}" alt="Луна" class="img-fluid">
                         <p>Целимся на Луну и Марс</p>
                     </div>
-                    <div class="item">
-                        <img src="{% static 'img/medal_champion_award_winner_olympic_icon_207824.webp'%}" alt="Золотая медаль">
+                    <div class="col-6">
+                        <img src="{% static 'img/medal_champion_award_winner_olympic_icon_207824.webp' %}" alt="Золотая медаль" class="img-fluid">
                         <p>Золотая медаль по научным исследованиям</p>
                     </div>
                 </div>
 
-                <!-- Фотография космоса -->
-                <div class="space-image">
-                    <img src="{% static 'img/1551cdc9f6189529e46dbb2e3f1e7a9246f62e2cr1-1200-750v2_hq.jpg' %}" alt="Космос">
+                <!-- Правая часть с фотографией -->
+                <div class="col-12 col-md-6 space-image-container">
+                    <img src="{% static 'img/1551cdc9f6189529e46dbb2e3f1e7a9246f62e2cr1-1200-750v2_hq.jpg' %}" alt="Космос" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -101,16 +99,16 @@
         </div>
     </div>
 </div>
-    <!-- Подключаем jQuery и Slick JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<!-- Подключаем jQuery и Slick JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
-    <!-- Подключаем Bootstrap Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Подключаем Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Скрипты для слайдера и модального окна -->
-    <script type="text/javascript">
-        $(document).ready(function() {
+<!-- Скрипты для слайдера и модального окна -->
+<script type="text/javascript">
+    $(document).ready(function() {
     let currentIndex = 0;
     const images = $('.slider-for img');
 
@@ -137,7 +135,7 @@
         showImage(currentIndex + 1);
     });
 
-    // Добавить обработку стрелок клавиатуры (опционально)
+// Добавить обработку стрелок клавиатуры (опционально)
     $(document).keydown(function(e) {
         if ($('#imageModal').hasClass('show')) {
             if (e.key === 'ArrowLeft') {
@@ -147,10 +145,9 @@
             }
         }
     });
-});
 
-$(document).ready(function() {
-    // Инициализация основного слайдера
+
+// Инициализация основного слайдера
     $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -158,7 +155,16 @@ $(document).ready(function() {
         asNavFor: '.slider-nav',
     });
 
-$(document).ready(function() {
+
+    // Инициализация слайдера миниатюр
+    $('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        focusOnSelect: true,
+        infinite: false,
+    });
+
+    $(document).ready(function() {
     // Найдем стрелки
     var prevArrow = document.querySelector('.slick-prev');
     var nextArrow = document.querySelector('.slick-next');
@@ -184,17 +190,8 @@ $(document).ready(function() {
         prevArrow.style.transform = 'translateY(-50%)'; // Центрируем по вертикали
         nextArrow.style.transform = 'translateY(-50%)';
     }
-});
-
-
-
-    // Инициализация слайдера миниатюр
-    $('.slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        focusOnSelect: true,
-        infinite: false,
     });
+
 
     // Открытие изображения в модальном окне
     $('.slider-for img').click(function() {
@@ -207,7 +204,7 @@ $(document).ready(function() {
     $('#modalImage').click(function() {
         $('#imageModal').modal('hide');
     });
-});
-    </script>
+    });
+</script>
 </body>
 </html>

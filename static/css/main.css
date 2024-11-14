@@ -32,63 +32,62 @@
 /* Основной контейнер для изображений и правой картинки */
 .section-content {
     display: flex;
-    justify-content: flex-start;
-    gap: 0px;
-    margin-bottom: 40px;
-    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
 }
+
 /* Левая часть с иконками */
-.left-images {
+.col-6 .mb-3 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 0px;
-    grid-column-gap: 0px;
+    gap: 10px;
     flex: 1;
-    justify-items: center;
+}
+
+/* Индивидуальные стили для изображений в иконках */
+.col-6, .col-md-3 {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 35%;
-    margin: 0 auto;
 }
 
-/* Индивидуальные стили для изображений */
-.left-images .item {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.col-6 mb-3 img {
+    width: 33%;
+    border-radius: 15px;
+    margin-bottom: 10px;
 }
 
-.left-images .item img {
-    width: 50%;
-    border-radius: 25px;
-}
-
-/* Стиль для текста под иконками */
-.left-images .item p {
+/* Текст под изображениями */
+.col-6 p, .col-md-3 p {
     text-align: center;
     margin-top: 10px;
     font-size: 14px;
     line-height: 1.2;
-    max-width: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
-/* Правое изображение (квадратное) */
-.space-image {
-    flex-shrink: 0;
-    width: 350px;
-    height: 350px;
-    margin-left: 20px;
-    border-radius: 10px;
-    overflow: hidden;
+/* Правое изображение */
+.space-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.space-image img {
-    width: 100%;
-    height: 100%;
+.space-image-container img {
+    width: 75%;
+    height: auto;
     object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Адаптивные настройки для больших экранов */
+@media (min-width: 768px) {
+    .section-content {
+        gap: 20px;
+    }
 }
 
 /* Слайдер в подвале */
