@@ -1,5 +1,4 @@
 Django==4.1
 mysqlclient==2.1.0
-django-filer
-django-admin-sortable2
-slick-carousel
+django-filer==2.1.1
+django-admin-sortable2==1.0.6
