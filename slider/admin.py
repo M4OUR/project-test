@@ -17,4 +17,4 @@ class SliderItemAdmin(SortableAdminMixin, admin.ModelAdmin):
             thumbnail_url = get_thumbnailer(obj.image).get_thumbnail(thumbnail_options).url
             return mark_safe(f'<img src="{thumbnail_url}" style="max-width: 150px; height: auto;" />')
         return '-'
-    admin_thumbnail.short_description = 'Preview'
+    admin_thumbnail.short_description = 'Предпросмотр'
